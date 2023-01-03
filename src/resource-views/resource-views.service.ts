@@ -11,6 +11,8 @@ import { UsersService } from '../users/users.service';
 import { CreateResourceViewDto } from './dto/create-resource-view.dto';
 import { UpdateResourceViewDto } from './dto/update-resource-view.dto';
 import { ResourceView } from './entities/resource-view.entity';
+import slugify from 'slugify';
+import * as crypto from 'crypto';
 
 @Injectable()
 export class ResourceViewsService {
@@ -40,7 +42,12 @@ export class ResourceViewsService {
     this.setupCredentialsForResourceExplorer(provider.credentials);
 
     const params: ResourceExplorer2.CreateViewInput = {
-      ViewName: createResourceViewDto.name,
+      ViewName: slugify(
+        `${createResourceViewDto.name} ${crypto
+          .randomBytes(3)
+          .toString('hex')}`,
+        { lower: true, trim: true },
+      ),
     };
     const response = await this.resourceExplorer.createView(params).promise();
     const { ViewArn } = response.View;
