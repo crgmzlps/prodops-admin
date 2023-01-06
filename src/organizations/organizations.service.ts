@@ -31,10 +31,14 @@ export class OrganizationsService {
     const { providers } = await this.findOne(organizationId);
     return providers;
   }
+  async listValueStreamsOfOrganization(organizationId: number) {
+    const { valueStreams } = await this.findOne(organizationId);
+    return valueStreams;
+  }
 
   async findOne(id: number) {
     const organization = await this.organizationRepository.findOne(id, {
-      relations: ['providers'],
+      relations: ['providers', 'valueStreams'],
     });
     if (!organization) {
       throw new NotFoundException();

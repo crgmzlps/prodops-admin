@@ -10,6 +10,7 @@ import {
 } from 'typeorm';
 import { Resource } from '../../resources/entities/resource.entity';
 import { UserEntity } from '../../users/user.entity';
+import { ValueStreamEntity } from '../../value-streams/entities/value-stream.entity';
 
 @Entity('organizations')
 export class Organization {
@@ -26,4 +27,6 @@ export class Organization {
   providers: Provider[];
   @OneToMany(() => Resource, (resource) => resource.organization)
   resources: Resource[];
+  @OneToMany(() => ValueStreamEntity, (valueStream) => valueStream.organization)
+  valueStreams: ValueStreamEntity[];
 }

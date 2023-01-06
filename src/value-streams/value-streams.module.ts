@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { OrganizationsModule } from '../organizations/organizations.module';
 import { EdgeEntity } from './entities/edge.entity';
 import { NodeEntity } from './entities/node.entity';
 import { ValueStreamEntity } from './entities/value-stream.entity';
@@ -9,6 +10,7 @@ import { ValueStreamsService } from './value-streams.service';
 @Module({
   imports: [
     TypeOrmModule.forFeature([ValueStreamEntity, NodeEntity, EdgeEntity]),
+    OrganizationsModule,
   ],
   controllers: [ValueStreamsController],
   providers: [ValueStreamsService],

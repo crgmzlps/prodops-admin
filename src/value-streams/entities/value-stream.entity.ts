@@ -1,4 +1,5 @@
-import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
+import { Organization } from '../../organizations/entities/organization.entity';
 import { EdgeEntity } from './edge.entity';
 import { NodeEntity } from './node.entity';
 
@@ -12,4 +13,6 @@ export class ValueStreamEntity {
   nodes: Array<NodeEntity>;
   @OneToMany(() => EdgeEntity, (edge) => edge.valueStream)
   edges: Array<EdgeEntity>;
+  @ManyToOne(() => Organization, (org) => org.valueStreams)
+  organization: Organization;
 }
