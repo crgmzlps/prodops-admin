@@ -14,6 +14,7 @@ import { ScansModule } from './scans/scans.module';
 import { ResourcesModule } from './resources/resources.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './users/users.module';
+import { ValueStreamsModule } from './value-streams/value-streams.module';
 
 // const OpenTelemetryModuleConfig = OpenTelemetryModule.forRoot({
 //   metrics: {
@@ -62,6 +63,7 @@ import { UserModule } from './users/users.module';
     ResourcesModule,
     AuthModule,
     UserModule,
+    ValueStreamsModule,
   ],
 })
 export class AppModule {}

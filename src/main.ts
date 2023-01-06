@@ -20,6 +20,10 @@ async function bootstrap() {
     //   format: winston.format.json(),
     //   transports: [new winston.transports.Console()],
     // }),
+    cors: {
+      origin: 'http://localhost:3000',
+      credentials: true,
+    },
   });
   // app.useLogger(app.get(Logger));
   const configService = app.get(ConfigService);

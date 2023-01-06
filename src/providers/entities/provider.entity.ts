@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import { Organization } from 'src/organizations/entities/organization.entity';
 import { ResourceView } from 'src/resource-views/entities/resource-view.entity';
 import {
@@ -22,6 +23,7 @@ export class Provider {
   @Column({ nullable: true })
   content: string;
 
+  @Exclude()
   @Column({ type: 'json' })
   credentials: Credentials;
 
