@@ -1,7 +1,7 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
 import { Organization } from '../../organizations/entities/organization.entity';
-import { EdgeEntity } from './edge.entity';
-import { NodeEntity } from './node.entity';
+import { Edge } from './edge.entity';
+import { Node } from './node.entity';
 
 @Entity('value_streams')
 export class ValueStreamEntity {
@@ -9,10 +9,10 @@ export class ValueStreamEntity {
   id: string;
   @Column({ nullable: true })
   name: string;
-  @OneToMany(() => NodeEntity, (node) => node.valueStream)
-  nodes: Array<NodeEntity>;
-  @OneToMany(() => EdgeEntity, (edge) => edge.valueStream)
-  edges: Array<EdgeEntity>;
+  @Column({ type: 'json' })
+  nodes: Array<Node>;
+  @Column({ type: 'json' })
+  edges: Array<Edge>;
   @ManyToOne(() => Organization, (org) => org.valueStreams)
   organization: Organization;
 }

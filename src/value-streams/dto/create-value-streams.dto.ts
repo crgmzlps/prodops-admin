@@ -29,7 +29,7 @@ class Node {
   position: Position;
 }
 
-export class ValueStreamsDto {
+export class CreateValueStreamsDto {
   @ApiProperty({ type: [Node] })
   @IsNotEmpty()
   nodes: Array<Node>;
