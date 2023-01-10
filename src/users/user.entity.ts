@@ -32,7 +32,9 @@ export class UserEntity {
 
   @OneToMany(() => TokenEntity, (token) => token.user)
   tokens: TokenEntity[];
-  @ManyToOne(() => Organization, (organization) => organization.members)
+  @ManyToOne(() => Organization, (organization) => organization.members, {
+    onDelete: 'SET NULL',
+  })
   organization: Organization;
   @OneToMany(() => Organization, (organization) => organization.owner)
   organizations: Organization[];
